@@ -2,7 +2,6 @@
 #include <Cstring>
 #include <fstream>
 using namespace std;
-
 void toggle(string &str)
 {
     int length = str.length();
@@ -13,7 +12,6 @@ void toggle(string &str)
             str[i] = tolower(c);
     }
 }
-
 int main()
 {
     string s;

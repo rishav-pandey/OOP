@@ -40,7 +40,6 @@ int main()
         ch = fgetc(fr);
     }
     fclose(fr);
-    cout << " -------------------------------------";
     cout << "\n Total No. of Characters  : " << noc;
     cout << "\n Total No. of Words       : " << now;
     cout << "\n Total No. of Lines       : " << nol;

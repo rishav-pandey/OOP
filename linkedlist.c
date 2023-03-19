@@ -1,45 +1,74 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-struct node{
-    int data;
-    struct node *next;
+struct Node
+{
+    int data733;
+    struct Node *next;
 };
 
-void linkedlistraversal(struct node*head)
+void deleteAlt(struct Node *head)
 {
-    struct node *ptr=head;
-    do{
-        printf("ELEMENTS IS:%d\n",ptr->data);
-        ptr=ptr->next;
-        
-    }while(ptr!=head);
+    if (head == NULL)
+        return;
+
+    struct Node *prev = head;
+    struct Node *node = head->next;
+
+    while (prev != NULL &&
+           node != NULL)
+    {
+
+        prev->next = node->next;
+
+        free(node);
+
+        prev = prev->next;
+        if (prev != NULL)
+            node = prev->next;
+    }
+}
+
+void push(struct Node **head_ref,
+          int new_data)
+{
+
+    struct Node *new_node =
+        (struct Node *)malloc(sizeof(struct Node));
+
+    new_node->data733 = new_data;
+
+    new_node->next = (*head_ref);
+
+    (*head_ref) = new_node;
+}
+
+void printList(struct Node *node)
+{
+    while (node != NULL)
+    {
+        printf("%d ", node->data733);
+        node = node->next;
+    }
 }
 
 int main()
 {
-   struct node *head;
-   struct node *second;
-   struct node*third;
-   struct node*fourth;
 
-   head=(struct node *)malloc(sizeof(struct node));
-   second=(struct node *)malloc(sizeof(struct node));
-   third=(struct node *)malloc(sizeof(struct node));
-   fourth=(struct node *)malloc(sizeof(struct node));
+    struct Node *head = NULL;
 
-   head->data=13;
-   head->next=second;
+    push(&head, 5);
+    push(&head, 4);
+    push(&head, 3);
+    push(&head, 2);
+    push(&head, 1);
 
-   second->data=14;
-   second->next=third;
+    printf("\nList before calling deleteAlt() \n");
+    printList(head);
 
-   third->data=16;
-   third->next=fourth;
+    deleteAlt(head);
 
-   fourth->data=18;
-   fourth->next=head;
-
-   linkedlistraversal(head);
-
+    printf("\nList after calling deleteAlt() \n");
+    printList(head);
+    return 0;
 }

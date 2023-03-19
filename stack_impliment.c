@@ -1,7 +1,3 @@
-// 2.WAP TO REVERSE A QUEUE USING STACK
-
-// Wap to reverse a queue using stack
-
 #include <stdio.h>
 
 int f = -1,
